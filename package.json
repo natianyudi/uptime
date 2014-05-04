@@ -1,0 +1,12 @@
+{
+  "name": "hello-world",
+  "description": "hello world test app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": ">=4.0.0",
+	"socket.io": "0.9.16", 
+	"jquery": ">= 1.9",
+	"jsdom": "0.10.5"
+  }
+}

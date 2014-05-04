@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Status</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+      var socket = io.connect('http://localhost');  
+      // each message will be a new time, so just insert it directly
+      socket.on('serverStatus', function(data){
+				document.getElementById('dataLen').innerHTML =data[0].history.length;
+				
+        document.getElementById('google').innerHTML = data[0].history[data[0].history.length-1].status;
+				document.getElementById('Youtube').innerHTML = data[1].history[data[1].history.length-1].status;
+				document.getElementById('hulu').innerHTML = data[2].history[data[2].history.length-1].status;
+      });
+    </script>
+  </head>
+  <body>
+    <p>Real Time Status Updates</p>
+    <p>Length of data: <span id="dataLen"></span></p>
+		<div>Google: <span id="google"></span></div>
+		<div>CBS: <span id="Youtube"></span></div>
+		<div>Hulu: <span id="hulu"></span></div>
+  </body>
+</html>
