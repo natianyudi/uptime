@@ -8,5 +8,5 @@ Web application to show server status
 
 ## How to use
 
-		-add your target server info to node_list
+	-add your target server info to node_list
 

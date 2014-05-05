@@ -1,11 +1,36 @@
 var app = require('express')();
+var path = require("path");
 var server = require('http').createServer(app);
 var http = require('http');
 var io = require('socket.io').listen(server);
-
 var jsdom = require('jsdom');
 var window = jsdom.jsdom().createWindow();
 var $ = require('jquery')(window);
+var app_root_path = path.join(__dirname, './');
+var cradle = require('cradle');
+
+
+// DB setup
+cradle.setup({
+    host: 'localhost',
+    cache: true,
+    raw: false,
+    forceSave: true
+  });
+var db = new(cradle.Connection)().database('uptime');
+
+  db.save('ping_histries', {
+      site: 'google'
+  }, function (err, res) {
+      if (err) {
+          // Handle error
+          console.log(err);
+      } else {
+          // Handle success
+          console.log('ok');
+      }
+  });
+
 
 var node_list = [
 	{
@@ -51,13 +76,26 @@ var status_list = [
 	
 	// }
 ]
+
 server.listen(3000, function(){
-	console.log('Listening on port1111 %d', server.address().port);
+	console.log('Listening on port %d', server.address().port);
 });
 
 app.get('/', function(req, res){
 res.sendfile(__dirname+'/index.html');
 });
+
+app.get('/assets/*', function (req, res) {
+	    var file_inner_path = path.relative("/assets", req.url);
+	    var path1 = path.join(app_root_path, "/app/assets/js", file_inner_path);
+	    var path3 = path.join(app_root_path, "/app/assets/css", file_inner_path);
+	    var final_path = path1;
+	    if(path.existsSync(path1)) final_path = path1;
+	    else if(path.existsSync(path3)) final_path = path3;
+	    else final_path = path1;
+
+	    res.sendfile(final_path);
+	});
 
 //when page is loaded, show info too
 
@@ -67,7 +105,7 @@ io.sockets.on('connection', function (socket) {
 	setInterval(function () {
 		curl(socket);
 		console.log("node_list.length: "+node_list.length);
-  }, 1000*100);
+  }, 1000*200);
 });
 
 var index = 0;
