@@ -1,4 +1,4 @@
-# Status (Express, nodejs, socket.io)
+# Uptime
 
 Web application to show server status
 
@@ -7,6 +7,3 @@ Web application to show server status
 - TBA
 
 ## How to use
-
-	-add your target server info to node_list
-
