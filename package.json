@@ -1,6 +1,6 @@
 {
-  "name": "hello-world",
-  "description": "hello world test app",
+  "name": "uptime",
+  "description": "uptime app",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -8,6 +8,13 @@
     "socket.io": "0.9.16",
     "jquery": ">= 1.9",
     "jsdom": "0.10.5",
-    "cradle": "*"
+	"angular": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.2.x",
+	"http-server": "^0.6.1",
+  }, 
+  "scripts":{
+  "start":"http-server -p 8000"
   }
 }

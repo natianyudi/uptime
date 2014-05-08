@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="uptime">
   <head>
     <meta charset="utf-8">
     <title>Status</title>
@@ -22,11 +22,12 @@
     // });
     </script>
   </head>
-  <body>
-    <p>Real Time Status Updates</p>
-    <p>Length of data: <span id="dataLen"></span></p>
-		<div>Google: <span id="google"></span></div>
-		<div>CBS: <span id="Youtube"></span></div>
-		<div>Hulu: <span id="hulu"></span></div>
+  <body ng-controller="ServerListCtrl">
+	<ul>
+		<li ng-repeat="server in servers">
+			{{server.name}}
+			<p>{{server.status}}</p>
+		</li>
+	</ul>
   </body>
 </html>

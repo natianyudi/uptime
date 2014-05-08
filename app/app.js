@@ -11,6 +11,7 @@ var cradle = require('cradle');
 
 
 // DB setup
+/*
 cradle.setup({
     host: 'localhost',
     cache: true,
@@ -30,7 +31,7 @@ var db = new(cradle.Connection)().database('uptime');
           console.log('ok');
       }
   });
-
+*/
 
 var node_list = [
 	{
@@ -76,19 +77,19 @@ var status_list = [
 	
 	// }
 ]
-
+/*
 server.listen(3000, function(){
 	console.log('Listening on port %d', server.address().port);
 });
-
+*/
 app.get('/', function(req, res){
 res.sendfile(__dirname+'/index.html');
 });
 
 app.get('/assets/*', function (req, res) {
 	    var file_inner_path = path.relative("/assets", req.url);
-	    var path1 = path.join(app_root_path, "/app/assets/js", file_inner_path);
-	    var path3 = path.join(app_root_path, "/app/assets/css", file_inner_path);
+	    var path1 = path.join(app_root_path, "/assets/js", file_inner_path);
+	    var path3 = path.join(app_root_path, "/assets/css", file_inner_path);
 	    var final_path = path1;
 	    if(path.existsSync(path1)) final_path = path1;
 	    else if(path.existsSync(path3)) final_path = path3;
@@ -98,7 +99,7 @@ app.get('/assets/*', function (req, res) {
 	});
 
 //when page is loaded, show info too
-
+/*
 io.sockets.on('connection', function (socket) {
   curl(socket);
   
@@ -107,7 +108,7 @@ io.sockets.on('connection', function (socket) {
 		console.log("node_list.length: "+node_list.length);
   }, 1000*200);
 });
-
+*/
 var index = 0;
 function curl(socket){
   console.log("index: " + index);
