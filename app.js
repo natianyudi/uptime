@@ -77,11 +77,11 @@ var status_list = [
 	
 	// }
 ]
-/*
+
 server.listen(3000, function(){
 	console.log('Listening on port %d', server.address().port);
 });
-*/
+
 app.get('/', function(req, res){
 res.sendfile(__dirname+'/index.html');
 });
